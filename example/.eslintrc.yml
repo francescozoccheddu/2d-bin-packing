@@ -1,0 +1,13 @@
+env:
+  node: true
+  browser: false
+extends:
+  - "../.eslintrc.yml"
+overrides:
+  - files:
+      - "*.ts"
+    extends:
+      - "plugin:@typescript-eslint/recommended"
+      - "plugin:@typescript-eslint/recommended-type-checked"
+    parserOptions:
+      project: "./example/tsconfig.json"

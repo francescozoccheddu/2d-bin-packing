@@ -1,0 +1,18 @@
+{
+  "version": "1.0.0",
+  "configurations": [
+    {
+      "name": "Debug example",
+      "request": "launch",
+      "runtimeArgs": [
+        "run-script",
+        "run-example"
+      ],
+      "runtimeExecutable": "npm",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "type": "node"
+    }
+  ]
+}

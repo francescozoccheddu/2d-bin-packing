@@ -1,0 +1,47 @@
+{
+  "name": "@francescozoccheddu/2d-bin-packing",
+  "version": "0.0.1",
+  "description": "2D bin packing algorithm",
+  "author": "Francesco Zoccheddu (https://github.com/francescozoccheddu/)",
+  "homepage": "https://github.com/francescozoccheddu/2d-bin-packing#readme",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/francescozoccheddu/2d-bin-packing.git"
+  },
+  "bugs": {
+    "url": "https://github.com/francescozoccheddu/2d-bin-packing/issues"
+  },
+  "keywords": [
+    "bin-packing",
+    "2d",
+    "layout",
+    "typescript",
+    "util"
+  ],
+  "scripts": {
+    "run-example": "tsx --tsconfig ./example/tsconfig.json ./example/main.ts",
+    "build": "shx rm -rf dist tsconfig.tsbuildinfo && eslint ./src && tsc --project ./tsconfig.json && tsc-alias -p tsconfig.json && npm-prepare-dist -s build -s run-example -s lint -s publish -f LICENSE -f README.md",
+    "lint": "tsc --noEmit --project ./tsconfig.json && eslint ./src",
+    "publish": "npm run build && cd dist && npm publish --access public"
+  },
+  "devDependencies": {
+    "@tsconfig/strictest": "^2.0.2",
+    "@types/node": "^20.11.16",
+    "@typescript-eslint/eslint-plugin": "^6.20.0",
+    "@typescript-eslint/parser": "^6.20.0",
+    "eslint": "^8.56.0",
+    "eslint-import-resolver-typescript": "^3.6.1",
+    "eslint-plugin-import": "^2.29.1",
+    "eslint-plugin-no-relative-import-paths": "^1.5.3",
+    "eslint-plugin-simple-import-sort": "^10.0.0",
+    "eslint-plugin-unused-imports": "^3.0.0",
+    "npm-prepare-dist": "^0.4.1",
+    "shx": "^0.3.4",
+    "tsc-alias": "^1.8.8",
+    "tsx": "^4.7.0"
+  },
+  "dependencies": {
+    "@francescozoccheddu/ts-goodies": "^0.0.6"
+  }
+}
