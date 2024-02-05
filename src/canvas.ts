@@ -3,7 +3,7 @@ import '@francescozoccheddu/ts-goodies/globals/essentials';
 import { startClock } from 'src/clock';
 import { LinearListBinSet } from 'src/linear-list-bin-set';
 import { LinearSetBinSet } from 'src/linear-set-bin-set';
-import { area, Rect, RectPos, RectSize } from 'src/rect';
+import { area, centerX, centerY, floatTowards, Rect, RectPos, RectSize } from 'src/rect';
 
 export type CanvasDebugLogger = (log: Str) => void;
 
@@ -41,6 +41,10 @@ export const positioners = {
   bottomLeft: (container: Rect) => ({
     leftX: container.leftX,
     bottomY: container.bottomY,
+  }),
+  center: (container: Rect, childSize: RectSize, canvas: Canvas) => floatTowards(container, childSize, {
+    x: centerX(canvas.rect),
+    y: centerY(canvas.rect),
   }),
 
 } as const satisfies RStrObj<CanvasPositioner>;

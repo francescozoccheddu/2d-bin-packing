@@ -46,6 +46,22 @@ export function fits(containerSize: RectSize, childSize: RectSize): Bool {
   return containerSize.width >= childSize.width && containerSize.height >= childSize.height;
 }
 
+export function floatTowards(container: Rect, childSize: RectSize, center: Vec): Rect {
+  const desiredPosition: RectPos = {
+    leftX: center.x - childSize.width / 2,
+    bottomY: center.y - childSize.height / 2,
+  };
+  return {
+    ...childSize,
+    leftX: clamp(desiredPosition.leftX, container.leftX, rightX(container) - childSize.width),
+    bottomY: clamp(desiredPosition.bottomY, container.bottomY, topY(container) - childSize.height),
+  };
+}
+
+export function clamp(value: Num, min: Num, max: Num): Num {
+  return Math.min(Math.max(min, value), max);
+}
+
 export function overlap(a: Rect, b: Rect): Rect | Nul {
   const lx = Math.max(a.leftX, b.leftX);
   const by = Math.max(a.bottomY, b.bottomY);
