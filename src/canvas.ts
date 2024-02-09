@@ -49,9 +49,17 @@ export const positioners = {
     leftX: container.leftX,
     bottomY: container.bottomY,
   }),
-  center: (container: Rect, childSize: RectSize, canvas: Canvas) => floatTowards(container, childSize, {
+  canvasCenter: (container: Rect, childSize: RectSize, canvas: Canvas) => floatTowards(container, childSize, {
     x: centerX(canvas.rect),
     y: centerY(canvas.rect),
+  }),
+  center: (container: Rect, childSize: RectSize) => floatTowards(container, childSize, {
+    x: centerX(container),
+    y: centerY(container),
+  }),
+  random: (container: Rect, childSize: RectSize) => ({
+    leftX: container.leftX + Math.random() * (container.width - childSize.width),
+    bottomY: container.bottomY + Math.random() * (container.height - childSize.height),
   }),
 
 } as const satisfies RStrObj<CanvasPositioner>;
