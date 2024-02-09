@@ -1,6 +1,6 @@
 {
   "name": "@francescozoccheddu/2d-bin-packing",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "2D bin packing algorithm",
   "author": "Francesco Zoccheddu (https://github.com/francescozoccheddu/)",
   "homepage": "https://github.com/francescozoccheddu/2d-bin-packing#readme",

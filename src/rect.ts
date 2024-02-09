@@ -38,8 +38,22 @@ export function center(rect: Rect): Vec {
   };
 }
 
-export function distance(a: Vec, b: Vec): Num {
-  return Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+export function vecLen(vec: Vec): Num {
+  return Math.sqrt(vec.x ** 2 + vec.y ** 2);
+}
+
+export function vecDistance(a: Vec, b: Vec): Num {
+  return vecLen({
+    x: a.x - b.x,
+    y: a.y - b.y,
+  });
+}
+
+export function rectVecDistance(a: Rect, b: Vec): Num {
+  return vecLen({
+    x: Math.max(a.leftX - b.x, 0, b.x - rightX(a)),
+    y: Math.max(a.bottomY - b.y, 0, b.y - topY(a)),
+  });
 }
 
 export function fits(containerSize: RectSize, childSize: RectSize): Bool {

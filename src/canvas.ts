@@ -3,7 +3,7 @@ import '@francescozoccheddu/ts-goodies/globals/essentials';
 import { startClock } from 'src/clock';
 import { LinearListBinSet } from 'src/linear-list-bin-set';
 import { LinearSetBinSet } from 'src/linear-set-bin-set';
-import { area, centerX, centerY, floatTowards, Rect, RectPos, RectSize } from 'src/rect';
+import { area, centerX, centerY, floatTowards, Rect, RectPos, RectSize, rectVecDistance } from 'src/rect';
 
 export type CanvasDebugLogger = (log: Str) => void;
 
@@ -33,6 +33,13 @@ export const choosers = {
   any: (candidates: Iterable<Rect>) => candidates,
   smallest: (candidates: Iterable<Rect>) => [...candidates].sort((a, b) => area(a) - area(b)),
   largest: (candidates: Iterable<Rect>) => [...candidates].sort((a, b) => area(b) - area(a)),
+  center: (candidates: Iterable<Rect>, _: RectSize, canvas: Canvas) => {
+    const c = {
+      x: centerX(canvas.rect),
+      y: centerY(canvas.rect),
+    };
+    return [...candidates].sort((a, b) => rectVecDistance(a, c) - rectVecDistance(b, c));
+  },
 
 } as const satisfies RStrObj<CanvasChooser>;
 
